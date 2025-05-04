@@ -1,0 +1,679 @@
+{% extends "base.html" %}
+
+{% block title %}SHL Assessment Recommendations{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <!-- Print-friendly styles that only apply when printing -->
+    <style media="print">
+        @page {
+            margin: 1cm;
+        }
+        body {
+            font-size: 12pt;
+            color: #000 !important;
+            background-color: #fff !important;
+        }
+        header, footer, nav, .no-print {
+            display: none !important;
+        }
+        .print-only {
+            display: block !important;
+        }
+        .recommendation-card {
+            page-break-inside: avoid;
+            break-inside: avoid;
+            border: 1px solid #ddd !important;
+            margin-bottom: 20px !important;
+            padding: 15px !important;
+            box-shadow: none !important;
+        }
+        .dark\:bg-gray-800, .dark\:bg-gray-900, .bg-white {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+        .text-gray-700, .text-gray-800, .dark\:text-gray-300, .dark\:text-gray-200 {
+            color: #000 !important;
+        }
+        .bg-gradient-to-br {
+            background: none !important;
+        }
+        .shadow-lg, .shadow-xl, .shadow-md {
+            box-shadow: none !important;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <!-- Enhanced Header section with print, share buttons and compare button -->
+    <div class="flex justify-between items-center mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Your SHL Assessment Recommendations</h1>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">Personalized recommendations based on your inputs</p>
+        </div>
+        <div class="flex space-x-3">
+            <button id="compare-button" class="hidden flex items-center bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition shadow-sm hover:shadow">
+                <i class="ri-scales-line mr-2"></i>
+                Compare Selected
+                <span id="compare-count" class="ml-2 bg-white text-primary-600 text-xs font-medium px-2 py-0.5 rounded-full">0</span>
+            </button>
+            <button id="print-button" class="flex items-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 transition shadow-sm hover:shadow">
+                <i class="ri-printer-line mr-2"></i>
+                Print
+            </button>
+            <button id="share-button" class="flex items-center bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 transition shadow-sm hover:shadow">
+                <i class="ri-share-line mr-2"></i>
+                Share
+            </button>
+        </div>
+    </div>
+    
+    <!-- Print-only header that appears when printed -->
+    <div class="print-only hidden">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold">SHL Assessment Recommendations Report</h1>
+            <p class="text-sm">Generated on {% if now %}{{ now.strftime('%B %d, %Y') }}{% else %}May 4, 2025{% endif %}</p>
+        </div>
+    </div>
+    
+    <!-- Enhanced Header section with animated elements -->
+    <div class="relative mb-12">
+        <!-- Decorative blurs with animation -->
+        <div class="absolute -top-10 -left-20 w-64 h-64 bg-primary-500/5 dark:bg-primary-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute top-20 right-10 w-80 h-80 bg-accent-500/5 dark:bg-accent-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+        
+        <!-- Floating graphic elements -->
+        <div class="absolute left-0 top-1/3 w-12 h-12 bg-gradient-to-br from-vibrant-blue/20 to-vibrant-teal/20 dark:from-vibrant-blue/10 dark:to-vibrant-teal/10 rounded-lg rotate-12 animate-float" style="animation-duration: 8s;"></div>
+        <div class="absolute right-0 bottom-1/3 w-10 h-10 bg-gradient-to-br from-vibrant-purple/20 to-vibrant-pink/20 dark:from-vibrant-purple/10 dark:to-vibrant-pink/10 rounded-full animate-float" style="animation-duration: 6s; animation-delay: 1s;"></div>
+        
+        <div class="flex flex-col md:flex-row md:items-center justify-between relative">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex items-center mb-2">
+                    <span class="inline-block mr-3 p-2.5 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 text-white shadow-lg">
+                        <i class="ri-list-check-3 text-2xl"></i>
+                    </span>
+                    <span>Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">Assessment</span> Recommendations</span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 ml-14">Based on your selected criteria</p>
+            </div>
+            <a href="{{ url_for('main.index') }}" class="mt-4 md:mt-0 inline-flex items-center px-5 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md dark:hover:shadow-primary-900/20 border border-gray-100 dark:border-gray-700 group">
+                <i class="ri-arrow-left-line mr-2 group-hover:-translate-x-1 transition-transform text-primary-500 dark:text-primary-400"></i>
+                New Search
+            </a>
+        </div>
+
+        <!-- Criteria badges section with enhanced design and animation -->
+        <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg dark:shadow-primary-900/10 p-6 mt-6 border border-gray-100 dark:border-gray-700 transform transition-all hover:shadow-xl dark:hover:shadow-primary-900/20 duration-300">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-primary-300 mb-4 flex items-center">
+                <i class="ri-filter-3-line mr-2 text-primary-600 dark:text-primary-400"></i>
+                Selected Criteria
+            </h3>
+            <div class="flex flex-wrap gap-2">
+                {% if user_inputs.job_role %}
+                <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 shadow-sm hover:shadow transform hover:-translate-y-0.5 transition-all cursor-default">
+                    <i class="ri-briefcase-4-line mr-1.5"></i>
+                    {{ user_inputs.job_role }}
+                </span>
+                {% endif %}
+                
+                {% if user_inputs.experience_level %}
+                <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium bg-accent-100 text-accent-800 dark:bg-accent-900/50 dark:text-accent-300 shadow-sm hover:shadow transform hover:-translate-y-0.5 transition-all cursor-default">
+                    <i class="ri-user-star-line mr-1.5"></i>
+                    {{ user_inputs.experience_level }}
+                </span>
+                {% endif %}
+                
+                {% if user_inputs.industry %}
+                <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium bg-vibrant-blue/10 text-vibrant-blue dark:bg-vibrant-blue/20 dark:text-blue-300 shadow-sm hover:shadow transform hover:-translate-y-0.5 transition-all cursor-default">
+                    <i class="ri-building-2-line mr-1.5"></i>
+                    {{ user_inputs.industry }}
+                </span>
+                {% endif %}
+                
+                {% for skill in user_inputs.skills %}
+                <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 shadow-sm hover:shadow transform hover:-translate-y-0.5 transition-all cursor-default">
+                    <i class="ri-tools-line mr-1.5"></i>
+                    {{ skill }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Results summary with animation -->
+    {% if recommendations %}
+    <div class="mb-8 text-center">
+        <div class="inline-flex items-center justify-center px-4 py-2 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full animate-fade-in">
+            <i class="ri-thumb-up-line mr-2"></i>
+            Found <span class="font-bold mx-1">{{ recommendations|length }}</span> matching assessments
+        </div>
+    </div>
+    {% endif %}
+
+    {% if recommendations %}
+        <!-- Comparison modal -->
+        <div id="comparison-modal" class="fixed inset-0 bg-black/50 dark:bg-gray-900/70 backdrop-blur-sm z-50 hidden items-center justify-center transition-opacity duration-500">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-6xl w-full mx-6 max-h-[90vh] overflow-hidden flex flex-col">
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+                        <i class="ri-scales-line text-primary-500 mr-2"></i>
+                        Assessment Comparison
+                    </h3>
+                    <button id="close-comparison" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400">
+                        <i class="ri-close-line text-xl"></i>
+                    </button>
+                </div>
+                <div class="overflow-auto flex-grow p-6" id="comparison-content">
+                    <div class="flex space-x-4" id="comparison-container">
+                        <!-- Comparison content will be injected here -->
+                    </div>
+                </div>
+                <div class="p-6 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+                    <button id="close-comparison-btn" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            {% for recommendation in recommendations %}
+                <!-- Assessment card with premium design and better contrast -->
+                <div class="group bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl dark:shadow-primary-900/10 dark:hover:shadow-primary-900/30 transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 relative recommendation-card" data-assessment-id="{{ recommendation.assessment.id }}" data-index="{{ loop.index }}">
+                    <!-- Premium accent bar with animated gradient -->
+                    <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r {{ 
+                        'from-emerald-500 via-green-400 to-emerald-500 dark:from-emerald-600 dark:via-green-500 dark:to-emerald-600' if recommendation.relevance_score >= 80 else 
+                        'from-amber-500 via-yellow-400 to-amber-500 dark:from-amber-600 dark:via-yellow-500 dark:to-amber-600' if recommendation.relevance_score >= 60 else 
+                        'from-rose-500 via-red-400 to-rose-500 dark:from-rose-600 dark:via-red-500 dark:to-rose-600' 
+                    }} bg-animate-gradient"></div>
+                    
+                    <!-- Premium header with glass morphism effect -->
+                    <div class="relative bg-gradient-to-r from-primary-50/90 via-indigo-50/90 to-accent-50/90 dark:from-primary-900/40 dark:via-indigo-900/40 dark:to-accent-900/40 p-6 pt-12 backdrop-blur-md group-hover:from-primary-50/95 group-hover:to-accent-50/95 dark:group-hover:from-primary-900/50 dark:group-hover:to-accent-900/50 transition-all duration-300">
+                        <!-- Animated background pattern -->
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-5 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:12px_12px] transition-opacity duration-500"></div>
+                        
+                        <!-- Elegant comparison checkbox with improved styling -->
+                        <div class="absolute top-2 right-2 z-10">
+                            <div class="comparison-checkbox-wrapper inline-flex items-center p-1.5 rounded-md bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-md border border-primary-100 dark:border-primary-800 group/checkbox">
+                                <input type="checkbox" id="compare-{{ recommendation.assessment.id }}" class="compare-checkbox w-4 h-4 text-primary-600 bg-white dark:bg-gray-700 border-primary-200 dark:border-primary-700 rounded focus:ring-primary-500 dark:focus:ring-primary-600" data-assessment-id="{{ recommendation.assessment.id }}" data-assessment-name="{{ recommendation.assessment.name }}">
+                                <label for="compare-{{ recommendation.assessment.id }}" class="ml-1.5 text-xs font-medium text-primary-600 dark:text-primary-400 group-hover/checkbox:text-primary-800 dark:group-hover/checkbox:text-primary-300 transition-colors">Compare</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Assessment title and description with enhanced typography -->
+                        <div class="w-full pr-4">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors duration-300">{{ recommendation.assessment.name }}</h3>
+                            <p class="text-gray-700 dark:text-gray-300 mt-2.5 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+                                {{ recommendation.assessment.description }}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Premium match score badge with gradient and shadow effect -->
+                    <div class="absolute top-12 right-6 transform transition-transform group-hover:scale-110 duration-300">
+                        <div class="flex items-center gap-1 {{ 
+                            'bg-gradient-to-r from-emerald-50 to-green-50 text-emerald-700 dark:from-emerald-900/50 dark:to-green-900/50 dark:text-emerald-300' if recommendation.relevance_score >= 80 else 
+                            'bg-gradient-to-r from-amber-50 to-yellow-50 text-amber-700 dark:from-amber-900/50 dark:to-yellow-900/50 dark:text-amber-300' if recommendation.relevance_score >= 60 else 
+                            'bg-gradient-to-r from-rose-50 to-red-50 text-rose-700 dark:from-rose-900/50 dark:to-red-900/50 dark:text-rose-300' 
+                        }} rounded-full px-3.5 py-1.5 text-sm font-semibold shadow-lg border {{ 
+                            'border-emerald-200 dark:border-emerald-800/50' if recommendation.relevance_score >= 80 else 
+                            'border-amber-200 dark:border-amber-800/50' if recommendation.relevance_score >= 60 else 
+                            'border-rose-200 dark:border-rose-800/50' 
+                        }}">
+                            <i class="ri-{{ 
+                                'verified-badge-fill' if recommendation.relevance_score >= 80 else 
+                                'shield-star-line' if recommendation.relevance_score >= 60 else 
+                                'error-warning-fill' 
+                            }} mr-1.5"></i>
+                            {{ recommendation.relevance_score }}% Match
+                        </div>
+                    </div>
+                    
+                    <!-- Card body with enhanced layouts and premium shadows -->
+                    <div class="p-6 dark:text-gray-200">
+                        <!-- Enhanced info boxes with gradient hover effects -->
+                        <div class="grid grid-cols-2 gap-5 mb-6">
+                            <div class="bg-gradient-to-br from-gray-50 to-gray-50/50 dark:from-gray-700/50 dark:to-gray-800/50 p-3.5 rounded-lg transition-all group-hover:from-primary-50 group-hover:to-primary-50/50 dark:group-hover:from-primary-900/30 dark:group-hover:to-primary-800/20 transform group-hover:-translate-y-0.5 duration-300 shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700">
+                                <div class="text-sm text-gray-500 dark:text-gray-400 mb-1 font-medium">Category</div>
+                                <div class="font-medium text-gray-800 dark:text-gray-100 flex items-center">
+                                    <i class="ri-price-tag-3-line text-primary-600 dark:text-primary-400 mr-2"></i>
+                                    {{ recommendation.assessment.category }}
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-gray-50 to-gray-50/50 dark:from-gray-700/50 dark:to-gray-800/50 p-3.5 rounded-lg transition-all group-hover:from-primary-50 group-hover:to-primary-50/50 dark:group-hover:from-primary-900/30 dark:group-hover:to-primary-800/20 transform group-hover:-translate-y-0.5 duration-300 shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700" style="transition-delay: 50ms;">
+                                <div class="text-sm text-gray-500 dark:text-gray-400 mb-1 font-medium">Duration</div>
+                                <div class="font-medium text-gray-800 dark:text-gray-100 flex items-center">
+                                    <i class="ri-time-line text-primary-600 dark:text-primary-400 mr-2"></i>
+                                    {{ recommendation.assessment.duration }} minutes
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-gray-50 to-gray-50/50 dark:from-gray-700/50 dark:to-gray-800/50 p-3.5 rounded-lg transition-all group-hover:from-primary-50 group-hover:to-primary-50/50 dark:group-hover:from-primary-900/30 dark:group-hover:to-primary-800/20 transform group-hover:-translate-y-0.5 duration-300 shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700" style="transition-delay: 100ms;">
+                                <div class="text-sm text-gray-500 dark:text-gray-400 mb-1 font-medium">Difficulty</div>
+                                <div class="font-medium text-gray-800 dark:text-gray-100 flex items-center">
+                                    <i class="ri-equalizer-line text-primary-600 dark:text-primary-400 mr-2"></i>
+                                    {{ recommendation.assessment.difficulty }}
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-gray-50 to-gray-50/50 dark:from-gray-700/50 dark:to-gray-800/50 p-3.5 rounded-lg transition-all group-hover:from-primary-50 group-hover:to-primary-50/50 dark:group-hover:from-primary-900/30 dark:group-hover:to-primary-800/20 transform group-hover:-translate-y-0.5 duration-300 shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700" style="transition-delay: 150ms;">
+                                <div class="text-sm text-gray-500 dark:text-gray-400 mb-1 font-medium">ID</div>
+                                <div class="font-medium text-gray-800 dark:text-gray-100 flex items-center">
+                                    <i class="ri-fingerprint-line text-primary-600 dark:text-primary-400 mr-2"></i>
+                                    {{ recommendation.assessment.id }}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skills section with enhanced premium styling -->
+                        <div class="mb-6 bg-gradient-to-br from-accent-50/30 to-accent-50/10 dark:from-accent-900/20 dark:to-accent-900/10 p-4 rounded-lg border border-accent-100/50 dark:border-accent-800/30 shadow-sm">
+                            <div class="flex items-center text-sm text-accent-700 dark:text-accent-300 mb-3 font-medium">
+                                <i class="ri-tools-line mr-2 p-1.5 bg-accent-100/50 dark:bg-accent-900/50 rounded-md"></i>
+                                Skills Measured
+                            </div>
+                            <div class="flex flex-wrap gap-2 px-1">
+                                {% for skill in recommendation.assessment.skills_measured %}
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-accent-50 text-accent-700 dark:bg-accent-900/30 dark:text-accent-300 border border-accent-100/50 dark:border-accent-800/50 transition-all duration-300 hover:bg-accent-100 dark:hover:bg-accent-800/30 transform hover:-translate-y-0.5 hover:shadow-sm">
+                                    {{ skill }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <!-- Why this assessment premium section with improved accordion -->
+                        <div class="border-t border-gray-100 dark:border-gray-700 pt-5">
+                            <details class="group/accordion bg-gradient-to-br from-indigo-50/30 to-indigo-50/10 dark:from-indigo-900/20 dark:to-indigo-900/10 rounded-lg overflow-hidden">
+                                <summary class="flex justify-between items-center font-medium cursor-pointer text-gray-700 dark:text-gray-200 p-4 hover:bg-indigo-50/50 dark:hover:bg-indigo-900/30 transition-colors">
+                                    <span class="flex items-center">
+                                        <i class="ri-question-line mr-2 p-1.5 bg-indigo-100/50 dark:bg-indigo-900/50 rounded-md text-indigo-600 dark:text-indigo-400"></i>
+                                        <span class="font-medium text-indigo-700 dark:text-indigo-300">Why this assessment?</span>
+                                    </span>
+                                    <span class="transition-transform duration-300 text-indigo-600 dark:text-indigo-400 group-open/accordion:rotate-180">
+                                        <i class="ri-arrow-down-s-line text-xl"></i>
+                                    </span>
+                                </summary>
+                                <div class="mt-1 space-y-4 px-4 pb-4 animate-fade-in">
+                                    {% if recommendation.match_factors.job_role is defined %}
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm flex items-center text-gray-600 dark:text-gray-300 font-medium">
+                                            <i class="ri-briefcase-4-line mr-2 text-primary-600 dark:text-primary-400 p-1 bg-primary-50 dark:bg-primary-900/50 rounded"></i>
+                                            Job Role Match
+                                        </span>
+                                        <div class="w-28 bg-gray-100 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden shadow-inner">
+                                            {% set job_role_width = (recommendation.match_factors.job_role * 100)|int %}
+                                            <div class="bg-gradient-to-r from-primary-500 to-primary-400 dark:from-primary-400 dark:to-primary-500 h-2.5 rounded-full shadow-inner" style="width: 0%" id="job-role-progress-{{ loop.index }}"></div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    {% if recommendation.match_factors.experience_level is defined %}
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm flex items-center text-gray-600 dark:text-gray-300 font-medium">
+                                            <i class="ri-user-star-line mr-2 text-accent-600 dark:text-accent-400 p-1 bg-accent-50 dark:bg-accent-900/50 rounded"></i>
+                                            Experience Match
+                                        </span>
+                                        <div class="w-28 bg-gray-100 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden shadow-inner">
+                                            {% set exp_width = (recommendation.match_factors.experience_level * 100)|int %}
+                                            <div class="bg-gradient-to-r from-accent-500 to-accent-400 dark:from-accent-400 dark:to-accent-500 h-2.5 rounded-full shadow-inner" style="width: 0%" id="exp-progress-{{ loop.index }}"></div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    {% if recommendation.match_factors.industry is defined %}
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm flex items-center text-gray-600 dark:text-gray-300 font-medium">
+                                            <i class="ri-building-2-line mr-2 text-vibrant-blue dark:text-vibrant-blue p-1 bg-blue-50 dark:bg-blue-900/50 rounded"></i>
+                                            Industry Match
+                                        </span>
+                                        <div class="w-28 bg-gray-100 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden shadow-inner">
+                                            {% set ind_width = (recommendation.match_factors.industry * 100)|int %}
+                                            <div class="bg-gradient-to-r from-vibrant-blue to-blue-400 dark:from-vibrant-blue dark:to-blue-500 h-2.5 rounded-full shadow-inner" style="width: 0%" id="ind-progress-{{ loop.index }}"></div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    {% if recommendation.match_factors.skills is defined %}
+                                    <div class="border-t border-indigo-100/50 dark:border-indigo-800/30 pt-3 mt-3">
+                                        <div class="text-sm flex items-center text-gray-600 dark:text-gray-300 mb-3 font-medium">
+                                            <i class="ri-tools-line mr-2 text-green-600 dark:text-green-400 p-1 bg-green-50 dark:bg-green-900/50 rounded"></i>
+                                            Skills Match
+                                        </div>
+                                        <div class="pl-6 space-y-2.5">
+                                            {% set outer_loop_index = loop.index %}
+                                            {% for skill, score in recommendation.match_factors.skills.items() %}
+                                            <div class="flex items-center justify-between text-xs">
+                                                <span class="text-gray-700 dark:text-gray-300 font-medium">{{ skill }}</span>
+                                                <div class="w-28 bg-gray-100 dark:bg-gray-700 rounded-full h-1.5 overflow-hidden shadow-inner">
+                                                    {% set skill_width = (score * 100)|int %}
+                                                    <div class="bg-gradient-to-r from-green-500 to-teal-500 dark:from-green-400 dark:to-teal-400 h-1.5 rounded-full shadow-inner" style="width: 0%" id="skill-progress-{{ outer_loop_index }}-{{ loop.index }}"></div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </details>
+                        </div>
+                        
+                        <!-- Enhanced action buttons with premium styling -->
+                        <div class="flex justify-end mt-5 pt-5 border-t border-gray-100 dark:border-gray-700 space-x-3">
+                            <button type="button" class="inline-flex items-center px-3.5 py-1.5 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 transition-all hover:shadow-md group">
+                                <i class="ri-bookmark-line mr-1.5 text-primary-600 dark:text-primary-400 group-hover:animate-pulse"></i>
+                                Save
+                            </button>
+                            <button type="button" class="inline-flex items-center px-3.5 py-1.5 bg-gradient-to-r from-primary-50 to-primary-100 hover:from-primary-100 hover:to-primary-200 dark:from-primary-900/30 dark:to-primary-800/40 dark:hover:from-primary-800/40 dark:hover:to-primary-700/40 border border-primary-200 dark:border-primary-700 rounded-md text-sm font-medium text-primary-700 dark:text-primary-300 transition-all hover:shadow-md hover:-translate-y-0.5 group">
+                                <i class="ri-external-link-line mr-1.5 group-hover:translate-x-0.5 transition-transform"></i>
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Store the values for progress bars initialization -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Initialize assessment scores object
+                        window.assessmentScores = window.assessmentScores || {};
+                        
+                        // Score data for this card
+                        window.assessmentScores['{{ loop.index }}'] = {
+                            {% if recommendation.match_factors.job_role is defined %}
+                            jobRole: {{ (recommendation.match_factors.job_role * 100)|int }},
+                            {% endif %}
+                            {% if recommendation.match_factors.experience_level is defined %}
+                            experience: {{ (recommendation.match_factors.experience_level * 100)|int }},
+                            {% endif %}
+                            {% if recommendation.match_factors.industry is defined %}
+                            industry: {{ (recommendation.match_factors.industry * 100)|int }},
+                            {% endif %}
+                            {% if recommendation.match_factors.skills is defined %}
+                            skills: {
+                                {% for skill, score in recommendation.match_factors.skills.items() %}
+                                '{{ loop.index }}': {{ (score * 100)|int }}{% if not loop.last %},{% endif %}
+                                {% endfor %}
+                            }
+                            {% endif %}
+                        };
+                    });
+                </script>
+            {% endfor %}
+        </div>
+        
+        <!-- Share Modal -->
+        <div id="share-modal" class="fixed inset-0 bg-black/50 dark:bg-gray-900/70 backdrop-blur-sm z-50 hidden items-center justify-center transition-opacity duration-500">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full mx-6 overflow-hidden flex flex-col">
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+                        <i class="ri-share-line text-primary-500 mr-2"></i>
+                        Share Recommendations
+                    </h3>
+                    <button id="close-share" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400">
+                        <i class="ri-close-line text-xl"></i>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="share-link" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Share Link</label>
+                            <div class="mt-1 flex rounded-md shadow-sm">
+                                <input type="text" name="share-link" id="share-link" readonly class="flex-1 min-w-0 block w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 sm:text-sm focus:ring-primary-500 focus:border-primary-500">
+                                <button type="button" id="copy-link" class="inline-flex items-center px-4 py-2 border border-l-0 border-gray-300 dark:border-gray-600 rounded-r-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                    <i class="ri-file-copy-line mr-1"></i>
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Share via</p>
+                            <div class="flex space-x-3">
+                                <button id="share-email" class="flex-1 inline-flex justify-center items-center px-4 py-2 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-800/30 text-blue-700 dark:text-blue-300 rounded-lg transition-colors">
+                                    <i class="ri-mail-line mr-2"></i>
+                                    Email
+                                </button>
+                                <button id="share-pdf" class="flex-1 inline-flex justify-center items-center px-4 py-2 bg-red-100 hover:bg-red-200 dark:bg-red-900/30 dark:hover:bg-red-800/30 text-red-700 dark:text-red-300 rounded-lg transition-colors">
+                                    <i class="ri-file-pdf-line mr-2"></i>
+                                    PDF
+                                </button>
+                                <button id="share-whatsapp" class="flex-1 inline-flex justify-center items-center px-4 py-2 bg-green-100 hover:bg-green-200 dark:bg-green-900/30 dark:hover:bg-green-800/30 text-green-700 dark:text-green-300 rounded-lg transition-colors">
+                                    <i class="ri-whatsapp-line mr-2"></i>
+                                    WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <!-- Enhanced no recommendations message with better visual design -->
+        <div class="bg-gradient-to-br from-amber-50/80 to-amber-50/50 dark:from-amber-900/20 dark:to-amber-900/10 backdrop-blur-sm border-l-4 border-amber-500 dark:border-amber-600 p-8 rounded-xl shadow-md dark:shadow-primary-900/10 max-w-3xl mx-auto">
+            <div class="flex flex-col md:flex-row items-start">
+                <div class="flex-shrink-0 bg-amber-100 dark:bg-amber-800/50 p-4 rounded-full mb-4 md:mb-0">
+                    <i class="ri-error-warning-line text-3xl text-amber-500 dark:text-amber-400"></i>
+                </div>
+                <div class="md:ml-5">
+                    <h3 class="text-xl font-bold text-amber-800 dark:text-amber-300">No Recommendations Found</h3>
+                    <div class="mt-3 text-amber-700 dark:text-amber-400 text-lg">
+                        <p>We couldn't find any assessments matching your criteria. Please try adjusting your selections.</p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="{{ url_for('main.index') }}" class="inline-flex items-center px-5 py-2.5 bg-amber-100 hover:bg-amber-200 dark:bg-amber-800/50 dark:hover:bg-amber-700/50 text-amber-800 dark:text-amber-300 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md">
+                            <i class="ri-restart-line mr-2 text-lg"></i>
+                            Try a New Search
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tips for better matching -->
+            <div class="mt-8 pt-6 border-t border-amber-200/50 dark:border-amber-800/30">
+                <h4 class="font-medium text-amber-800 dark:text-amber-300 mb-3 flex items-center">
+                    <i class="ri-lightbulb-line mr-2"></i>
+                    Tips for better matching
+                </h4>
+                <ul class="space-y-2 text-sm text-amber-700 dark:text-amber-400 list-disc pl-5">
+                    <li>Try selecting broader job roles or industries</li>
+                    <li>Choose fewer but more relevant skills</li>
+                    <li>Consider adjusting your experience level</li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Enhanced CTA section with more visual elements -->
+    {% if recommendations %}
+    <div class="flex flex-col items-center mt-16 mb-8">
+        <div class="relative mb-6 w-full max-w-md mx-auto">
+            <!-- Decorative elements -->
+            <div class="absolute -z-10 inset-0 blur-3xl bg-gradient-to-br from-primary-200/20 to-accent-200/20 dark:from-primary-900/20 dark:to-accent-900/20 rounded-full opacity-70"></div>
+            <div class="absolute -z-10 inset-0 blur-2xl bg-gradient-to-tr from-accent-200/10 to-primary-200/10 dark:from-accent-900/10 dark:to-primary-900/10 rounded-full opacity-70 animate-pulse-slow" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <a href="{{ url_for('main.index') }}" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-700 hover:to-accent-700 dark:from-primary-700 dark:to-accent-700 dark:hover:from-primary-600 dark:hover:to-accent-600 text-white font-medium rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-primary-500/20 dark:hover:shadow-primary-700/30 flex items-center relative overflow-hidden group">
+            <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+            <i class="ri-restart-line mr-2.5 text-xl"></i>
+            Start New Search
+        </a>
+        
+        <div class="mt-4 flex space-x-4">
+            <button type="button" class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <i class="ri-download-line mr-1.5"></i>
+                Export Results
+            </button>
+            <button type="button" class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <i class="ri-share-line mr-1.5"></i>
+                Share
+            </button>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Hide loading overlay when recommendations page loads
+        const loadingOverlay = document.getElementById('loading-overlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.opacity = '0';
+            setTimeout(function() {
+                loadingOverlay.style.display = 'none';
+            }, 500);
+        }
+        
+        // Correctly initialize each card with a data-index attribute for easier reference
+        document.querySelectorAll('.recommendation-card').forEach((card, index) => {
+            card.setAttribute('data-index', index + 1);
+        });
+        
+        // Animate progress bars when details are toggled
+        document.querySelectorAll('details.group\/accordion').forEach(function(detailsElement) {
+            detailsElement.addEventListener('toggle', function() {
+                if (this.open) {
+                    // Get the parent card's index
+                    const parentCard = this.closest('.recommendation-card');
+                    const cardIndex = parentCard.getAttribute('data-index');
+                    
+                    if (cardIndex && window.assessmentScores && window.assessmentScores[cardIndex]) {
+                        const scores = window.assessmentScores[cardIndex];
+                        
+                        // Animate job role progress bar if it exists
+                        if (scores.jobRole !== undefined) {
+                            animateProgressBar(`#job-role-progress-${cardIndex}`, scores.jobRole);
+                        }
+                        
+                        // Animate experience progress bar if it exists
+                        if (scores.experience !== undefined) {
+                            setTimeout(() => {
+                                animateProgressBar(`#exp-progress-${cardIndex}`, scores.experience);
+                            }, 200);
+                        }
+                        
+                        // Animate industry progress bar if it exists
+                        if (scores.industry !== undefined) {
+                            setTimeout(() => {
+                                animateProgressBar(`#ind-progress-${cardIndex}`, scores.industry);
+                            }, 400);
+                        }
+                        
+                        // Animate all skill progress bars if they exist
+                        if (scores.skills) {
+                            let delay = 600;
+                            Object.entries(scores.skills).forEach(([skillIndex, score]) => {
+                                setTimeout(() => {
+                                    animateProgressBar(`#skill-progress-${cardIndex}-${skillIndex}`, score);
+                                }, delay);
+                                delay += 150;
+                            });
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Function to animate progress bars with better reliability
+        function animateProgressBar(selector, targetWidth) {
+            const progressBar = document.querySelector(selector);
+            if (!progressBar) {
+                console.warn(`Progress bar not found: ${selector}`);
+                return;
+            }
+            
+            // Reset to 0% first
+            progressBar.style.width = '0%';
+            
+            // Force browser to recognize the change before animating
+            setTimeout(() => {
+                progressBar.style.width = targetWidth + '%';
+                progressBar.style.transition = 'width 1000ms cubic-bezier(0.22, 1, 0.36, 1)';
+            }, 50);
+        }
+        
+        // Print button functionality
+        $('#print-button').on('click', function() {
+            window.print();
+        });
+
+        // Compare button functionality
+        const compareButton = $('#compare-button');
+        const compareCount = $('#compare-count');
+        const comparisonModal = $('#comparison-modal');
+        const comparisonContainer = $('#comparison-container');
+        const closeComparison = $('#close-comparison, #close-comparison-btn');
+
+        $('.compare-checkbox').on('change', function() {
+            const selectedCheckboxes = $('.compare-checkbox:checked');
+            const selectedCount = selectedCheckboxes.length;
+
+            compareCount.text(selectedCount);
+            compareButton.toggleClass('hidden', selectedCount === 0);
+
+            if (selectedCount > 0) {
+                comparisonContainer.empty();
+                selectedCheckboxes.each(function() {
+                    const assessmentId = $(this).data('assessment-id');
+                    const assessmentName = $(this).data('assessment-name');
+                    const card = $(`.recommendation-card[data-assessment-id="${assessmentId}"]`).clone();
+                    card.find('.comparison-checkbox-wrapper').remove();
+                    card.find('.recommendation-card').removeClass('hover:shadow-xl transform hover:-translate-y-1 hover:rotate-0.5');
+                    card.find('.recommendation-card').addClass('shadow-md');
+                    comparisonContainer.append(card);
+                });
+            }
+        });
+
+        compareButton.on('click', function() {
+            comparisonModal.removeClass('hidden');
+        });
+
+        closeComparison.on('click', function() {
+            comparisonModal.addClass('hidden');
+        });
+
+        // Share button functionality
+        const shareButton = $('#share-button');
+        const shareModal = $('#share-modal');
+        const closeShare = $('#close-share');
+        const shareLinkInput = $('#share-link');
+        const copyLinkButton = $('#copy-link');
+        const shareEmailButton = $('#share-email');
+        const sharePdfButton = $('#share-pdf');
+        const shareWhatsappButton = $('#share-whatsapp');
+
+        shareButton.on('click', function() {
+            shareLinkInput.val(window.location.href);
+            shareModal.removeClass('hidden');
+        });
+
+        closeShare.on('click', function() {
+            shareModal.addClass('hidden');
+        });
+
+        copyLinkButton.on('click', function() {
+            shareLinkInput.select();
+            document.execCommand('copy');
+            alert('Link copied to clipboard!');
+        });
+
+        shareEmailButton.on('click', function() {
+            const subject = encodeURIComponent('SHL Assessment Recommendations');
+            const body = encodeURIComponent(`Check out these recommendations: ${shareLinkInput.val()}`);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        });
+
+        sharePdfButton.on('click', function() {
+            alert('PDF sharing functionality is not implemented yet.');
+        });
+
+        shareWhatsappButton.on('click', function() {
+            const message = encodeURIComponent(`Check out these recommendations: ${shareLinkInput.val()}`);
+            window.open(`https://wa.me/?text=${message}`, '_blank');
+        });
+    });
+</script>
+{% endblock %}

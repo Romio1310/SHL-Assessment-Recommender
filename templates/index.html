@@ -1,0 +1,452 @@
+{% extends "base.html" %}
+
+{% block title %}SHL Assessment Recommender{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <!-- Hero section with enhanced animated elements -->
+    <div class="text-center mb-16 relative">
+        <!-- Decorative elements with improved positioning -->
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary-500/5 dark:bg-primary-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-accent-500/5 dark:bg-accent-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+        
+        <!-- Floating graphic elements -->
+        <div class="absolute left-0 top-1/4 w-12 h-12 bg-gradient-to-br from-vibrant-blue/20 to-vibrant-teal/20 dark:from-vibrant-blue/10 dark:to-vibrant-teal/10 rounded-lg rotate-12 animate-float" style="animation-duration: 8s;"></div>
+        <div class="absolute right-0 top-1/3 w-10 h-10 bg-gradient-to-br from-vibrant-purple/20 to-vibrant-pink/20 dark:from-vibrant-purple/10 dark:to-vibrant-pink/10 rounded-full animate-float" style="animation-duration: 6s; animation-delay: 1s;"></div>
+        
+        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3 relative inline-block">
+            Find Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-500 dark:to-accent-500">Perfect</span> Assessment
+            <span class="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-primary-500 to-accent-500 dark:from-primary-400 dark:to-accent-400 rounded-full transform origin-left"></span>
+        </h2>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 md:w-4/5 mx-auto mt-6">Personalized SHL assessment recommendations tailored to your job role, skills, and experience.</p>
+        
+        <!-- User engagement stats -->
+        <div class="flex justify-center mt-8 space-x-8 md:space-x-16">
+            <div class="flex flex-col items-center">
+                <span class="text-3xl font-bold text-primary-600 dark:text-primary-400 flex items-baseline">
+                    500<span class="text-lg text-primary-500 dark:text-primary-500 ml-1">+</span>
+                </span>
+                <span class="text-sm text-gray-500 dark:text-gray-400 mt-1">Assessments</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-3xl font-bold text-accent-600 dark:text-accent-400 flex items-baseline">
+                    5k<span class="text-lg text-accent-500 dark:text-accent-500 ml-1">+</span>
+                </span>
+                <span class="text-sm text-gray-500 dark:text-gray-400 mt-1">Users</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-3xl font-bold text-vibrant-purple flex items-baseline">
+                    98<span class="text-lg text-vibrant-pink ml-1">%</span>
+                </span>
+                <span class="text-sm text-gray-500 dark:text-gray-400 mt-1">Satisfaction</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main card with enhanced glassmorphism effect and more visual elements -->
+    <div class="rounded-2xl overflow-hidden bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-xl dark:shadow-primary-900/20 border border-gray-100 dark:border-gray-700 transform transition-all hover:shadow-2xl dark:hover:shadow-primary-900/30 duration-300">
+        <!-- Card header with improved animated pattern -->
+        <div class="bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-800 dark:to-accent-800 text-white p-6 relative overflow-hidden">
+            <!-- Animated pattern background with improved visuals -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] opacity-10 [background-size:16px_16px] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]"></div>
+                
+                <!-- Animated floating particles with varying sizes and speeds -->
+                <div class="absolute w-3 h-3 rounded-full bg-white/30 animate-float" style="top: 20%; left: 10%; animation-duration: 7s;"></div>
+                <div class="absolute w-2 h-2 rounded-full bg-white/20 animate-float" style="top: 60%; left: 15%; animation-duration: 5s; animation-delay: 1s;"></div>
+                <div class="absolute w-4 h-4 rounded-full bg-white/20 animate-float" style="top: 30%; left: 85%; animation-duration: 8s; animation-delay: 2.5s;"></div>
+                <div class="absolute w-2 h-2 rounded-full bg-white/30 animate-float" style="top: 70%; left: 80%; animation-duration: 6s; animation-delay: 1.5s;"></div>
+                
+                <!-- Animated glow effect -->
+                <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse-slow"></div>
+                <div class="absolute bottom-0 right-1/4 w-32 h-32 bg-white/5 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+            </div>
+            
+            <h3 class="text-xl md:text-2xl font-bold flex items-center relative z-10 text-shadow">
+                <i class="ri-search-line mr-3 p-2.5 bg-white/10 rounded-lg"></i>
+                Get Personalized Recommendations
+            </h3>
+            <p class="mt-2 opacity-90 relative z-10 pl-11 md:text-lg">Complete the form below to discover the most relevant SHL assessments for your needs.</p>
+        </div>
+        
+        <!-- Form with enhanced design and interactivity -->
+        <div class="p-6 md:p-8 dark:text-gray-200 relative">
+            <!-- Progress steps indicator -->
+            <div class="flex justify-between mb-8 relative">
+                <div class="absolute top-1/2 h-0.5 bg-gray-200 dark:bg-gray-700 w-full -translate-y-1/2 z-0"></div>
+                <div class="flex-1"></div>
+                <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 flex items-center justify-center font-semibold border-2 border-primary-500 dark:border-primary-600 z-10 relative">1</div>
+                <div class="flex-1"></div>
+                <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 flex items-center justify-center font-semibold border-2 border-gray-200 dark:border-gray-700 z-10 relative">2</div>
+                <div class="flex-1"></div>
+                <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 flex items-center justify-center font-semibold border-2 border-gray-200 dark:border-gray-700 z-10 relative">3</div>
+                <div class="flex-1"></div>
+            </div>
+            
+            <!-- Form with enhanced visual feedback -->
+            <form action="{{ url_for('main.recommend') }}" method="post" id="recommendation-form" class="space-y-8" data-loading="true">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="transition-all duration-300 group">
+                        <label for="job_role" class="block font-medium mb-2 text-gray-700 dark:text-primary-300 flex items-center group-hover:text-primary-700 dark:group-hover:text-primary-200 transition-colors">
+                            <i class="ri-briefcase-4-line mr-2 text-primary-600 dark:text-primary-400"></i>
+                            Job Role
+                        </label>
+                        <div class="relative">
+                            <select class="w-full py-3.5 px-5 rounded-xl bg-gray-50 dark:bg-gray-700/70 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-400 focus:ring focus:ring-primary-500/20 dark:focus:ring-primary-400/20 transition-all appearance-none" name="job_role" id="job_role" required>
+                                <option value="" selected disabled>Select a job role</option>
+                                {% for role in job_roles %}
+                                <option value="{{ role }}">{{ role }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-gray-400 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors">
+                                <i class="ri-arrow-down-s-line text-lg"></i>
+                            </div>
+                            <!-- Visual indicator for selection -->
+                            <div class="absolute left-0 top-0 h-full w-1 bg-transparent rounded-l-xl transition-colors" id="job_role_indicator"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="transition-all duration-300 group">
+                        <label for="industry" class="block font-medium mb-2 text-gray-700 dark:text-primary-300 flex items-center group-hover:text-primary-700 dark:group-hover:text-primary-200 transition-colors">
+                            <i class="ri-building-2-line mr-2 text-primary-600 dark:text-primary-400"></i>
+                            Industry/Domain
+                        </label>
+                        <div class="relative">
+                            <select class="w-full py-3.5 px-5 rounded-xl bg-gray-50 dark:bg-gray-700/70 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-400 focus:ring focus:ring-primary-500/20 dark:focus:ring-primary-400/20 transition-all appearance-none" name="industry" id="industry" required>
+                                <option value="" selected disabled>Select an industry</option>
+                                {% for industry in industries %}
+                                <option value="{{ industry }}">{{ industry }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-gray-400 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors">
+                                <i class="ri-arrow-down-s-line text-lg"></i>
+                            </div>
+                            <!-- Visual indicator for selection -->
+                            <div class="absolute left-0 top-0 h-full w-1 bg-transparent rounded-l-xl transition-colors" id="industry_indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills selection with improved interface -->
+                <div class="transition-all duration-300 group">
+                    <label for="skills" class="block font-medium mb-2 text-gray-700 dark:text-primary-300 flex items-center group-hover:text-primary-700 dark:group-hover:text-primary-200 transition-colors">
+                        <i class="ri-tools-line mr-2 text-primary-600 dark:text-primary-400"></i>
+                        Required Skills
+                    </label>
+                    <div class="relative">
+                        <select class="w-full py-3.5 px-5 rounded-xl bg-gray-50 dark:bg-gray-700/70 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-400 focus:ring focus:ring-primary-500/20 dark:focus:ring-primary-400/20 transition-all appearance-none" name="skills" id="skills" multiple required>
+                            {% for skill in skills %}
+                            <option value="{{ skill }}">{{ skill }}</option>
+                            {% endfor %}
+                        </select>
+                        
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 flex items-center bg-gray-50 dark:bg-gray-700/50 py-2 px-3 rounded-lg">
+                            <i class="ri-information-line mr-1.5 text-primary-500 dark:text-primary-400"></i>
+                            Hold Ctrl/Cmd to select multiple skills
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transition-all duration-300 group">
+                    <label class="block font-medium mb-3 text-gray-700 dark:text-primary-300 flex items-center group-hover:text-primary-700 dark:group-hover:text-primary-200 transition-colors">
+                        <i class="ri-user-star-line mr-2 text-primary-600 dark:text-primary-400"></i>
+                        Experience Level
+                    </label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        {% for level in experience_levels %}
+                        <div>
+                            <input type="radio" id="exp_{{ loop.index }}" name="experience_level" value="{{ level }}" class="hidden peer" required {% if loop.first %}checked{% endif %}>
+                            <label for="exp_{{ loop.index }}" class="flex items-center justify-center p-3.5 text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-700/70 border-2 border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer transition-all
+                                peer-checked:border-primary-500 dark:peer-checked:border-primary-400
+                                peer-checked:bg-primary-50 dark:peer-checked:bg-primary-900/30
+                                peer-checked:text-primary-700 dark:peer-checked:text-primary-300
+                                hover:bg-gray-100 dark:hover:bg-gray-600/50
+                                hover:border-gray-300 dark:hover:border-gray-500
+                                peer-checked:shadow-md">
+                                {{ level }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="pt-3">
+                    <button type="submit" class="w-full py-4 px-6 text-lg bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-700 hover:to-accent-700 dark:from-primary-700 dark:to-accent-700 dark:hover:from-primary-600 dark:hover:to-accent-600 text-white font-medium rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-primary-500/20 dark:hover:shadow-primary-700/30 flex justify-center items-center relative overflow-hidden group">
+                        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+                        <i class="ri-search-line mr-2.5 text-xl"></i>
+                        Get Recommendations
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Testimonial card -->
+    <div class="mt-16 p-6 bg-gradient-to-br from-gray-50 to-indigo-50/30 dark:from-gray-800 dark:to-indigo-950/30 rounded-xl border border-gray-100/50 dark:border-gray-700/50 shadow-lg dark:shadow-primary-900/10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 text-6xl opacity-10 text-primary-500 dark:text-primary-400">
+            <i class="ri-double-quotes-r"></i>
+        </div>
+        
+        <div class="relative z-10">
+            <p class="text-gray-700 dark:text-gray-300 italic text-lg leading-relaxed">
+                "The SHL Assessment Recommender has been a game-changer for our recruitment process. We've cut our assessment selection time by half and improved candidate matching significantly."
+            </p>
+            <div class="mt-4 flex items-center">
+                <div class="w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">
+                    <i class="ri-user-3-line"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="font-medium text-gray-900 dark:text-white">Sarah Johnson</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">HR Director, Fortune 500 Company</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Feature cards with enhanced design and interactivity -->
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Time saving feature with enhanced hover effects -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-7 text-center shadow-lg dark:shadow-primary-900/10 hover:shadow-xl dark:hover:shadow-primary-900/20 transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 group relative overflow-hidden">
+            <!-- Card decoration with animated gradient -->
+            <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-primary-500 to-primary-400 dark:from-primary-600 dark:to-primary-500"></div>
+            
+            <!-- Background pattern -->
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-5 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:12px_12px] transition-opacity duration-500"></div>
+            
+            <!-- Icon with enhanced animation -->
+            <div class="bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-300 p-4 rounded-full w-18 h-18 flex items-center justify-center mx-auto mb-5 transform group-hover:scale-110 group-hover:rotate-6 transition-all relative">
+                <i class="ri-time-line text-3xl"></i>
+                <!-- Glow effect on hover -->
+                <div class="absolute inset-0 rounded-full bg-primary-500/0 group-hover:bg-primary-500/20 dark:group-hover:bg-primary-400/20 blur-sm transition-colors duration-300"></div>
+            </div>
+            
+            <h3 class="font-bold text-xl mb-3 text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">Save Time</h3>
+            <p class="text-gray-600 dark:text-gray-400">Find the perfect assessments in seconds, not hours of manual searching and comparison.</p>
+            
+            <!-- Animated link -->
+            <div class="mt-5 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <a href="#" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 inline-flex items-center text-sm">
+                    Learn more <i class="ri-arrow-right-line ml-1 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Better matches feature with enhanced animation -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-7 text-center shadow-lg dark:shadow-accent-900/10 hover:shadow-xl dark:hover:shadow-accent-900/20 transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 group relative overflow-hidden">
+            <!-- Card decoration with animated gradient -->
+            <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-accent-500 to-accent-400 dark:from-accent-600 dark:to-accent-500"></div>
+            
+            <!-- Background pattern -->
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-5 bg-[radial-gradient(#d946ef_1px,transparent_1px)] [background-size:12px_12px] transition-opacity duration-500"></div>
+            
+            <!-- Icon with enhanced animation -->
+            <div class="bg-accent-100 dark:bg-accent-900/50 text-accent-600 dark:text-accent-300 p-4 rounded-full w-18 h-18 flex items-center justify-center mx-auto mb-5 transform group-hover:scale-110 group-hover:rotate-6 transition-all relative">
+                <i class="ri-checkbox-multiple-line text-3xl"></i>
+                <!-- Glow effect on hover -->
+                <div class="absolute inset-0 rounded-full bg-accent-500/0 group-hover:bg-accent-500/20 dark:group-hover:bg-accent-400/20 blur-sm transition-colors duration-300"></div>
+            </div>
+            
+            <h3 class="font-bold text-xl mb-3 text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-300 transition-colors">Better Matches</h3>
+            <p class="text-gray-600 dark:text-gray-400">Our advanced algorithm ensures you only get the most relevant assessment recommendations.</p>
+            
+            <!-- Animated link -->
+            <div class="mt-5 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <a href="#" class="text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 inline-flex items-center text-sm">
+                    Learn more <i class="ri-arrow-right-line ml-1 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Proven results feature with enhanced effects -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-7 text-center shadow-lg dark:shadow-vibrant-purple/10 hover:shadow-xl dark:hover:shadow-vibrant-purple/20 transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 group relative overflow-hidden">
+            <!-- Card decoration with animated gradient -->
+            <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-vibrant-purple to-vibrant-pink dark:from-vibrant-purple dark:to-vibrant-pink"></div>
+            
+            <!-- Background pattern -->
+            <div class="absolute inset-0 opacity-0 group-hover:opacity-5 bg-[radial-gradient(#8b5cf6_1px,transparent_1px)] [background-size:12px_12px] transition-opacity duration-500"></div>
+            
+            <!-- Icon with enhanced animation -->
+            <div class="bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 p-4 rounded-full w-18 h-18 flex items-center justify-center mx-auto mb-5 transform group-hover:scale-110 group-hover:rotate-6 transition-all relative">
+                <i class="ri-shield-star-line text-3xl"></i>
+                <!-- Glow effect on hover -->
+                <div class="absolute inset-0 rounded-full bg-purple-500/0 group-hover:bg-purple-500/20 dark:group-hover:bg-purple-400/20 blur-sm transition-colors duration-300"></div>
+            </div>
+            
+            <h3 class="font-bold text-xl mb-3 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">Proven Results</h3>
+            <p class="text-gray-600 dark:text-gray-400">Join thousands of companies using SHL assessments to find and develop top talent.</p>
+            
+            <!-- Animated link -->
+            <div class="mt-5 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 inline-flex items-center text-sm">
+                    Learn more <i class="ri-arrow-right-line ml-1 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="mt-24 mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 dark:text-white mb-10 relative inline-block">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-500 dark:to-accent-500">Frequently</span> Asked Questions
+            <span class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-accent-500 dark:from-primary-400 dark:to-accent-400 rounded-full"></span>
+        </h2>
+        
+        <div class="space-y-4 max-w-3xl mx-auto">
+            <!-- FAQ Item 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-md">
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer p-5 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-750 transition-colors">
+                        <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">How does the recommendation engine work?</h3>
+                        <span class="text-primary-500 dark:text-primary-400 transition-transform duration-300 group-open:rotate-180">
+                            <i class="ri-arrow-down-s-line text-xl"></i>
+                        </span>
+                    </summary>
+                    <div class="p-5 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">Our recommendation engine uses advanced algorithms that match your input criteria (job role, industry, skills, and experience level) against our database of SHL assessments. The system evaluates relevance scores based on multiple factors to provide you with the most appropriate assessment options.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <!-- FAQ Item 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-md">
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer p-5 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-750 transition-colors">
+                        <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">Can I customize the assessment recommendations?</h3>
+                        <span class="text-primary-500 dark:text-primary-400 transition-transform duration-300 group-open:rotate-180">
+                            <i class="ri-arrow-down-s-line text-xl"></i>
+                        </span>
+                    </summary>
+                    <div class="p-5 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">Yes, you can refine your search by updating your criteria and submitting again to receive different recommendations. We're also working on advanced filtering options in upcoming releases to allow more granular customization.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <!-- FAQ Item 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-md">
+                <details class="group">
+                    <summary class="flex justify-between items-center cursor-pointer p-5 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-750 transition-colors">
+                        <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">How often are new assessments added?</h3>
+                        <span class="text-primary-500 dark:text-primary-400 transition-transform duration-300 group-open:rotate-180">
+                            <i class="ri-arrow-down-s-line text-xl"></i>
+                        </span>
+                    </summary>
+                    <div class="p-5 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">Our assessment database is updated monthly with new SHL assessments as they become available. We continuously monitor industry trends to ensure our recommendations stay relevant to evolving job requirements and skills.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        // Enhanced form validation with custom styling and animations
+        $('#recommendation-form').on('submit', function(e) {
+            let valid = true;
+            
+            // Reset previous validation states
+            $('.error-message').remove();
+            $('#skills').removeClass('border-red-500 dark:border-red-500');
+            
+            // Check if skills are selected
+            if (!$('#skills').val() || $('#skills').val().length === 0) {
+                e.preventDefault();
+                valid = false;
+                
+                // Add error styling with enhanced animation
+                $('#skills').addClass('border-red-500 dark:border-red-500');
+                
+                // Add error message with animation
+                $('<div class="error-message flex items-center text-red-500 dark:text-red-400 mt-2 opacity-0 transform translate-y-2 bg-red-50 dark:bg-red-900/20 px-3 py-2 rounded-lg">' +
+                  '<i class="ri-error-warning-line mr-1.5"></i>' +
+                  'Please select at least one skill</div>')
+                    .insertAfter('#skills')
+                    .animate({opacity: 1, translateY: 0}, 300);
+                
+                // Shake effect for better visual feedback
+                $('#skills').css('transform', 'translateX(10px)');
+                setTimeout(function() {
+                    $('#skills').css('transform', 'translateX(-10px)');
+                    setTimeout(function() {
+                        $('#skills').css('transform', 'translateX(5px)');
+                        setTimeout(function() {
+                            $('#skills').css('transform', 'translateX(0)');
+                        }, 50);
+                    }, 50);
+                }, 50);
+                
+                // Show toast notification
+                if (typeof window.showToast === 'function') {
+                    window.showToast('Please select at least one skill', 'error');
+                }
+                
+                // Focus on the field with error
+                $('#skills').focus();
+            }
+            
+            return valid;
+        });
+        
+        // Enhanced select dropdowns with visual feedback
+        $('select').on('change', function() {
+            const selectId = $(this).attr('id');
+            
+            // Check if value is selected
+            if ($(this).val() && $(this).val().length > 0) {
+                $(`#${selectId}_indicator`).addClass('bg-primary-500 dark:bg-primary-400');
+                $(this).addClass('border-primary-300 dark:border-primary-600');
+            } else {
+                $(`#${selectId}_indicator`).removeClass('bg-primary-500 dark:bg-primary-400');
+                $(this).removeClass('border-primary-300 dark:border-primary-600');
+            }
+            
+            // For skills multiselect, update preview
+            if (selectId === 'skills') {
+                updateSkillsPreview();
+            }
+        });
+        
+        // Add subtle hover animation to select dropdowns
+        $('select').on('mouseenter', function() {
+            $(this).addClass('shadow-sm');
+        }).on('mouseleave', function() {
+            $(this).removeClass('shadow-sm');
+        });
+        
+        // Function to update selected skills preview
+        function updateSkillsPreview() {
+            const skills = $('#skills').val() || [];
+            const previewContainer = $('#selected-skills-preview');
+            
+            previewContainer.empty();
+            
+            if (skills.length === 0) {
+                return;
+            }
+            
+            skills.forEach(function(skill) {
+                $('<span class="px-2.5 py-1 rounded-full text-xs bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-800 animate-fade-in">' + 
+                  skill + '</span>').appendTo(previewContainer);
+            });
+        }
+        
+        // Run once at page load to set initial state
+        $('select').each(function() {
+            $(this).trigger('change');
+        });
+        
+        // FAQ accordion animation
+        $('details').on('toggle', function() {
+            if (this.open) {
+                $(this).find('div').slideDown(300);
+            } else {
+                $(this).find('div').slideUp(300);
+            }
+        });
+    });
+</script>
+{% endblock %}

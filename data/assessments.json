@@ -1,0 +1,351 @@
+{
+  "assessments": [
+    {
+      "id": "shl-001",
+      "name": "SHL Verify Cognitive Ability",
+      "description": "Measures critical reasoning and problem solving abilities",
+      "category": "Cognitive",
+      "duration": 30,
+      "difficulty": "Intermediate",
+      "skills_measured": ["Critical Thinking", "Problem Solving", "Numerical Reasoning"]
+    },
+    {
+      "id": "shl-002",
+      "name": "SHL Verify Numerical Reasoning",
+      "description": "Assesses ability to interpret and analyze numerical data",
+      "category": "Cognitive",
+      "duration": 25,
+      "difficulty": "Intermediate",
+      "skills_measured": ["Numerical Reasoning", "Data Analysis", "Statistical Interpretation"]
+    },
+    {
+      "id": "shl-003",
+      "name": "SHL Verify Verbal Reasoning",
+      "description": "Evaluates capacity to understand and analyze written information",
+      "category": "Cognitive",
+      "duration": 20,
+      "difficulty": "Intermediate",
+      "skills_measured": ["Verbal Reasoning", "Reading Comprehension", "Critical Thinking"]
+    },
+    {
+      "id": "shl-004",
+      "name": "SHL OPQ Personality Assessment",
+      "description": "Provides insights into workplace behaviors and preferences",
+      "category": "Personality",
+      "duration": 45,
+      "difficulty": "Basic",
+      "skills_measured": ["Self-awareness", "Team Fit", "Work Style"]
+    },
+    {
+      "id": "shl-005",
+      "name": "SHL Coding Assessment",
+      "description": "Evaluates programming skills and problem-solving abilities",
+      "category": "Technical",
+      "duration": 60,
+      "difficulty": "Advanced",
+      "skills_measured": ["Programming", "Algorithm Design", "Code Quality"]
+    },
+    {
+      "id": "shl-006",
+      "name": "SHL Leadership Assessment",
+      "description": "Assesses leadership potential and management capabilities",
+      "category": "Behavioral",
+      "duration": 40,
+      "difficulty": "Intermediate",
+      "skills_measured": ["Leadership", "Decision Making", "Team Management"]
+    },
+    {
+      "id": "shl-007",
+      "name": "SHL Customer Service Scenarios",
+      "description": "Evaluates customer service skills through realistic scenarios",
+      "category": "Situational",
+      "duration": 35,
+      "difficulty": "Intermediate",
+      "skills_measured": ["Communication", "Problem Resolution", "Customer Focus"]
+    },
+    {
+      "id": "shl-008",
+      "name": "SHL Sales Aptitude Assessment",
+      "description": "Measures potential for success in sales roles",
+      "category": "Behavioral",
+      "duration": 30,
+      "difficulty": "Intermediate",
+      "skills_measured": ["Persuasion", "Relationship Building", "Goal Orientation"]
+    },
+    {
+      "id": "shl-009",
+      "name": "SHL Mechanical Reasoning",
+      "description": "Tests understanding of mechanical concepts and physical principles",
+      "category": "Technical",
+      "duration": 25,
+      "difficulty": "Intermediate",
+      "skills_measured": ["Mechanical Aptitude", "Physical Principles", "Technical Understanding"]
+    },
+    {
+      "id": "shl-010",
+      "name": "SHL Graduate Reasoning Test",
+      "description": "Comprehensive assessment for graduate-level recruitment",
+      "category": "Cognitive",
+      "duration": 50,
+      "difficulty": "Advanced",
+      "skills_measured": ["Critical Thinking", "Numerical Reasoning", "Verbal Reasoning", "Abstract Reasoning"]
+    }
+  ],
+  "job_roles": [
+    "Software Developer",
+    "Data Analyst",
+    "Project Manager",
+    "Sales Representative",
+    "Customer Service Representative",
+    "Human Resources Specialist",
+    "Marketing Specialist",
+    "Financial Analyst",
+    "Product Manager",
+    "Operations Manager"
+  ],
+  "industries": [
+    "Technology",
+    "Healthcare",
+    "Finance",
+    "Manufacturing",
+    "Retail",
+    "Education",
+    "Energy",
+    "Telecommunications",
+    "Professional Services",
+    "Government"
+  ],
+  "experience_levels": [
+    "Entry Level",
+    "Mid-Career",
+    "Senior",
+    "Executive"
+  ],
+  "skills": [
+    "Programming",
+    "Data Analysis",
+    "Project Management",
+    "Communication",
+    "Leadership",
+    "Problem Solving",
+    "Customer Service",
+    "Sales",
+    "Financial Analysis",
+    "Marketing"
+  ],
+  "job_role_mappings": {
+    "Software Developer": {
+      "shl-001": 0.7,
+      "shl-003": 0.6,
+      "shl-005": 0.95,
+      "shl-010": 0.8
+    },
+    "Data Analyst": {
+      "shl-001": 0.8,
+      "shl-002": 0.95,
+      "shl-003": 0.7,
+      "shl-010": 0.75
+    },
+    "Project Manager": {
+      "shl-001": 0.7,
+      "shl-003": 0.8,
+      "shl-004": 0.75,
+      "shl-006": 0.9
+    },
+    "Sales Representative": {
+      "shl-003": 0.7,
+      "shl-004": 0.8,
+      "shl-007": 0.7,
+      "shl-008": 0.95
+    },
+    "Customer Service Representative": {
+      "shl-003": 0.8,
+      "shl-004": 0.7,
+      "shl-007": 0.95
+    },
+    "Human Resources Specialist": {
+      "shl-003": 0.85,
+      "shl-004": 0.9,
+      "shl-006": 0.7
+    },
+    "Marketing Specialist": {
+      "shl-001": 0.6,
+      "shl-003": 0.8,
+      "shl-004": 0.7,
+      "shl-008": 0.75
+    },
+    "Financial Analyst": {
+      "shl-001": 0.8,
+      "shl-002": 0.95,
+      "shl-003": 0.7,
+      "shl-010": 0.8
+    },
+    "Product Manager": {
+      "shl-001": 0.75,
+      "shl-003": 0.8,
+      "shl-004": 0.7,
+      "shl-006": 0.85
+    },
+    "Operations Manager": {
+      "shl-001": 0.7,
+      "shl-002": 0.75,
+      "shl-004": 0.7,
+      "shl-006": 0.85,
+      "shl-009": 0.6
+    }
+  },
+  "industry_mappings": {
+    "Technology": {
+      "shl-001": 0.8,
+      "shl-003": 0.7,
+      "shl-005": 0.9,
+      "shl-010": 0.85
+    },
+    "Healthcare": {
+      "shl-001": 0.7,
+      "shl-003": 0.8,
+      "shl-004": 0.75,
+      "shl-007": 0.85
+    },
+    "Finance": {
+      "shl-001": 0.8,
+      "shl-002": 0.95,
+      "shl-003": 0.7,
+      "shl-010": 0.85
+    },
+    "Manufacturing": {
+      "shl-001": 0.7,
+      "shl-002": 0.75,
+      "shl-009": 0.9
+    },
+    "Retail": {
+      "shl-003": 0.7,
+      "shl-004": 0.75,
+      "shl-007": 0.9,
+      "shl-008": 0.85
+    },
+    "Education": {
+      "shl-001": 0.75,
+      "shl-003": 0.9,
+      "shl-004": 0.8,
+      "shl-006": 0.7
+    },
+    "Energy": {
+      "shl-001": 0.8,
+      "shl-002": 0.85,
+      "shl-009": 0.9
+    },
+    "Telecommunications": {
+      "shl-001": 0.75,
+      "shl-003": 0.7,
+      "shl-005": 0.8,
+      "shl-007": 0.85
+    },
+    "Professional Services": {
+      "shl-001": 0.8,
+      "shl-003": 0.85,
+      "shl-004": 0.75,
+      "shl-006": 0.8,
+      "shl-010": 0.9
+    },
+    "Government": {
+      "shl-001": 0.7,
+      "shl-003": 0.85,
+      "shl-004": 0.7,
+      "shl-006": 0.75
+    }
+  },
+  "experience_mappings": {
+    "Entry Level": {
+      "shl-001": 0.8,
+      "shl-002": 0.7,
+      "shl-003": 0.75,
+      "shl-004": 0.65,
+      "shl-010": 0.85
+    },
+    "Mid-Career": {
+      "shl-001": 0.7,
+      "shl-002": 0.75,
+      "shl-003": 0.7,
+      "shl-004": 0.85,
+      "shl-005": 0.75,
+      "shl-006": 0.7,
+      "shl-007": 0.8,
+      "shl-008": 0.75,
+      "shl-009": 0.7,
+      "shl-010": 0.65
+    },
+    "Senior": {
+      "shl-001": 0.6,
+      "shl-002": 0.65,
+      "shl-003": 0.7,
+      "shl-004": 0.9,
+      "shl-005": 0.8,
+      "shl-006": 0.9,
+      "shl-007": 0.7,
+      "shl-008": 0.85,
+      "shl-009": 0.65,
+      "shl-010": 0.55
+    },
+    "Executive": {
+      "shl-001": 0.5,
+      "shl-003": 0.65,
+      "shl-004": 0.95,
+      "shl-006": 0.95
+    }
+  },
+  "skill_mappings": {
+    "Programming": {
+      "shl-001": 0.7,
+      "shl-005": 0.95,
+      "shl-010": 0.6
+    },
+    "Data Analysis": {
+      "shl-001": 0.8,
+      "shl-002": 0.95,
+      "shl-010": 0.75
+    },
+    "Project Management": {
+      "shl-001": 0.7,
+      "shl-006": 0.9,
+      "shl-010": 0.6
+    },
+    "Communication": {
+      "shl-003": 0.9,
+      "shl-004": 0.8,
+      "shl-006": 0.8,
+      "shl-007": 0.9,
+      "shl-008": 0.85
+    },
+    "Leadership": {
+      "shl-004": 0.8,
+      "shl-006": 0.95
+    },
+    "Problem Solving": {
+      "shl-001": 0.95,
+      "shl-005": 0.9,
+      "shl-007": 0.75,
+      "shl-010": 0.85
+    },
+    "Customer Service": {
+      "shl-004": 0.7,
+      "shl-007": 0.95,
+      "shl-008": 0.8
+    },
+    "Sales": {
+      "shl-004": 0.7,
+      "shl-007": 0.75,
+      "shl-008": 0.95
+    },
+    "Financial Analysis": {
+      "shl-001": 0.75,
+      "shl-002": 0.9,
+      "shl-010": 0.7
+    },
+    "Marketing": {
+      "shl-003": 0.8,
+      "shl-004": 0.7,
+      "shl-008": 0.85
+    }
+  }
+}

@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --primary-hue: 240;
+  --accent-hue: 300;
+}
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-800 font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+  
+  /* Text shadow utility for better readability on image backgrounds */
+  .text-shadow {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Improved transitions */
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  
+  /* Accessibility styles */
+  .high-contrast {
+    --tw-text-opacity: 1 !important;
+    --tw-bg-opacity: 1 !important;
+  }
+  
+  .high-contrast .dark\:text-gray-300 {
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
+  }
+  
+  .high-contrast .dark\:bg-gray-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(10, 10, 20, var(--tw-bg-opacity)) !important;
+  }
+  
+  /* For larger text option */
+  html.text-lg {
+    font-size: 1.125rem;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-primary-500;
+  }
+  
+  .btn-accent {
+    @apply bg-accent-600 text-white hover:bg-accent-700 focus:ring-accent-500;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-dark-card p-6 border border-gray-100 dark:border-gray-700 transition-all;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-card-hover dark:hover:shadow-dark-card-hover transform hover:-translate-y-1 transition-all duration-300;
+  }
+  
+  .card-header {
+    @apply p-4 border-b border-gray-100;
+  }
+  
+  .card-body {
+    @apply p-5;
+  }
+  
+  .form-label {
+    @apply block font-medium mb-2 text-gray-700 dark:text-primary-300 transition-colors;
+  }
+  
+  .form-control {
+    @apply block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring focus:ring-primary-500 focus:ring-opacity-20;
+  }
+  
+  .form-input {
+    @apply py-3.5 px-5 rounded-xl bg-gray-50 dark:bg-gray-700/70 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-400 focus:ring focus:ring-primary-500/20 dark:focus:ring-primary-400/20;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300;
+  }
+  
+  .badge-secondary {
+    @apply bg-secondary-100 text-secondary-800;
+  }
+  
+  .badge-accent {
+    @apply bg-accent-100 text-accent-800 dark:bg-accent-900/50 dark:text-accent-300;
+  }
+  
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  /* Custom animated placeholders */
+  .placeholder-glow {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-shimmer before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .animate-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animate-delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .animate-delay-400 {
+    animation-delay: 0.4s;
+  }
+  
+  .mask-fade-out-b {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+  
+  .bg-gradient-vibrant {
+    background: linear-gradient(135deg, theme('colors.vibrant.blue'), theme('colors.vibrant.purple'));
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

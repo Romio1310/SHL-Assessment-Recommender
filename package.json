@@ -1,0 +1,18 @@
+{
+  "name": "shl-assessment-recommendation-engine",
+  "version": "1.0.0",
+  "description": "SHL Assessment Recommendation Engine with Tailwind CSS",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/style.css --watch",
+    "build": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/style.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
+  }
+}
