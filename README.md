@@ -249,12 +249,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📬 Contact
 
-- **Created by**: GD
+- **Created by**: Romio1310
 - **GitHub**: [Romio1310](https://github.com/Romio1310)
 - **Email**: [Sharymann1329@gmail.com.com](mailto:Sharymann1329@gmail.com)
 
 ---
 
 <div align="center">
-  <p>Made with ❤️ by GD</p>
+  <p>Made with ❤️ by CallmeGD</p>
 </div>
